@@ -1,0 +1,8 @@
+body{
+    background-image: url('https://areajugones.sport.es/wp-content/uploads/2025/02/pokemon-1-1560x880.jpg.webp'); /* Ruta de tu imagen */
+      background-size: cover;                /* Ajusta la imagen para cubrir toda la pantalla */
+      background-repeat: no-repeat;          /* Evita que se repita */
+      background-position: center center;    /* Centra la imagen */
+      margin: 0;                             
+      height: 100vh;
+}
