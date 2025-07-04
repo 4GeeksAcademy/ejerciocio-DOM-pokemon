@@ -196,9 +196,9 @@ function crearTarjetas(pokemones) {
   contenedor.innerHTML = "";
   pokemones.forEach(poke => {
     const tarjeta = `
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem; background-image: url('https://i.etsystatic.com/46011703/r/il/19ccb7/5836667895/il_570xN.5836667895_7sso.jpg'); background-size: cover; background-position: center;">
   <img src="${poke.imagen}" class="card-img-top" alt="${poke.nombre}">
-  <div class="card-body">
+  <div class="card-body text-white">
     <p class="card-text">Nombre: ${poke.nombre}</p>
     <p class="card-text">Tipo: ${poke.tipo}</p>
     <p class="card-text">Nivel: ${poke.nivel}</p>
@@ -219,14 +219,18 @@ function crearTarjetas(pokemones) {
 
 btnSearch.addEventListener("click", () => {
   const texto = search.value.trim().toLowerCase();
-  const pokemonEncontrado = pokemones.find(p => p.nombre.toLowerCase() === texto);
 
-  if (pokemonEncontrado) {
-    crearTarjetas([pokemonEncontrado]); 
+  const resultados = pokemones.filter(p => 
+    p.nombre.toLowerCase().includes(texto) ||
+    p.tipo.some(t => t.toLowerCase().includes(texto))
+  );
+
+  if (resultados.length > 0) {
+    crearTarjetas(resultados);
   } else {
     document.getElementById("contenedor-pokemones").innerHTML = `
       <div class="col-12 text-center text-danger">
-        No se encontró ningún Pokémon con ese nombre.
+        No se encontró ningún Pokémon con ese nombre o tipo.
       </div>
     `;
   }

@@ -6,3 +6,8 @@ body{
       margin: 0;                             
       height: 100vh;
 }
+.card-body {
+  background-color: rgba(0, 0, 0, 0.5); /* negro con transparencia */
+  padding: 10px;
+  border-radius: 5px;
+}
